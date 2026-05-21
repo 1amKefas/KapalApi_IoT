@@ -1,0 +1,8 @@
+!pip install roboflow
+
+from roboflow import Roboflow
+rf = Roboflow(api_key="x7p0QsYaFKzVQRez7B7p")
+project = rf.workspace("kapal-api-workspace").project("deteksi-kematangan-tomat-aizlc")
+version = project.version(1)
+dataset = version.download("yolov8")
+                

@@ -1,0 +1,17 @@
+# Mengabaikan file model AI yang ukurannya besar
+*.pt
+
+# Mengabaikan dataset jika suatu saat di-download lokal
+dataset_tomat/
+dataset.txt
+*.zip
+
+# Mengabaikan cache Python
+__pycache__/
+*.pyc
+
+# Mengabaikan log hasil run YOLO
+runs/
+
+# Mengabaikan file teks
+*.txt

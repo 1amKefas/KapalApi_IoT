@@ -7,7 +7,7 @@ from ultralytics import YOLO
 # 1. SETUP MODEL & API
 # ==========================================
 # Load model YOLOv8 (pastikan best.pt ada di folder yang sama!)
-model = YOLO('best.pt')
+model = YOLO('best(1).pt')
 
 # Endpoint API Laravel Kefas
 API_URL = "http://localhost:8000/api/vision"
@@ -17,6 +17,10 @@ API_URL = "http://localhost:8000/api/vision"
 # ==========================================
 # Pakai 0 untuk webcam bawaan laptop. 
 cap = cv2.VideoCapture(0)
+
+# Turunin resolusi kamera dasar biar nggak berat di CPU
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
 # Atur biar ngirim data ke database tiap 3 detik aja biar ga jebol servernya
 last_sent_time = time.time()
@@ -33,14 +37,12 @@ while cap.isOpened():
     # ==========================================
     # 3. PROSES DETEKSI AI YOLOv8
     # ==========================================
-    results = model(frame, stream=True)
+    # conf=0.6 -> Hanya deteksi kalau AI yakin 60% ke atas! (Muka lu aman)
+    # imgsz=480 -> Bikin proses nebak di CPU laptop jauh lebih enteng!
+    results = model(frame, stream=True, conf=0.6, imgsz=480)
 
     # Siapkan wadah jumlah tomat
-    tomato_counts = {
-        'mentah': 0,
-        'mengkal': 0,
-        'matang': 0
-    }
+    tomato_counts = {'mentah': 0, 'mengkal': 0, 'matang': 0}
 
     annotated_frame = frame
 

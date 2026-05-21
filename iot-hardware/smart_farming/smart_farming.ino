@@ -5,15 +5,15 @@
 // ==========================================
 // 1. PENGATURAN WIFI & API
 // ==========================================
-const char* ssid = "LT4A05";
-const char* password = "KH19112003";
-// Ganti X dengan IP Address laptop lu (Kefas)
-const char* serverName = "http://192.168.1.X:8000/api/sensor"; 
+const char* ssid = "SSID WIFI";
+const char* password = "PASSWORD WIFI";
+// Ganti X dengan IP Address laptop 
+const char* serverName = "http://XXX.XXX.X.X:XXXX/"; 
 
 // ==========================================
 // 2. PENGATURAN PIN SENSOR (Sesuaikan nanti dengan wiring Rigin)
 // ==========================================
-#define DHTPIN 4          // Pin data DHT22 nyambung ke GPIO 4
+#define DHTPIN 4          // Pin data DHT22 
 #define DHTTYPE DHT22     // Jenis sensor DHT
 #define SOIL_PIN 34       // Pin analog sensor kelembapan tanah (A0)
 #define RELAY_PIN 5       // Pin untuk modul relay pompa air

@@ -93,7 +93,7 @@ export default function Dashboard() {
                   </div>
                   <div class="bg-yellow-50 rounded border border-yellow-100 p-4 flex flex-col items-center justify-center shadow-sm">
                     <span class="text-yellow-600 text-2xl font-bold mb-1">{tomatoCounts().partiallyRipe}</span>
-                    <span class="text-xs uppercase tracking-wider font-semibold text-yellow-700">Partially Ripe</span>
+                    <span class="text-xs uppercase tracking-wider font-semibold text-yellow-700">Partially Ripe (Mengkal)</span>
                   </div>
                   <div class="bg-green-50 rounded border border-green-100 p-4 flex flex-col items-center justify-center shadow-sm">
                     <span class="text-green-600 text-2xl font-bold mb-1">{tomatoCounts().raw}</span>

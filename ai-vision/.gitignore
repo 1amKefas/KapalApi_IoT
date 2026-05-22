@@ -15,3 +15,6 @@ runs/
 
 # Mengabaikan file teks
 *.txt
+*.onnx
+*.venv
+*.qodo

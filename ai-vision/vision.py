@@ -1,13 +1,20 @@
 import cv2
 import requests
 import time
+import torch
 from ultralytics import YOLO
 
 # ==========================================
 # 1. SETUP MODEL & API
 # ==========================================
-# Load model YOLOv8 (pastikan best.pt ada di folder yang sama!)
-model = YOLO('best(1).pt')
+# Load model YOLOv8 (pastikan best(2).pt ada di folder yang sama!)
+# Select device: use GPU if available
+device = "cuda:0" if torch.cuda.is_available() else "cpu"
+print(f"Using device: {device}")
+
+# Load the .pt model (replace with .onnx only if you need the ONNX runtime)
+model = YOLO('best(2).pt')
+
 
 # Endpoint API Laravel Kefas
 API_URL = "http://localhost:8000/api/vision"
@@ -16,7 +23,10 @@ API_URL = "http://localhost:8000/api/vision"
 # 2. SETUP KAMERA
 # ==========================================
 # Pakai 0 untuk webcam bawaan laptop. 
-cap = cv2.VideoCapture(0)
+#cap = cv2.VideoCapture(0)
+
+# IP Webcam
+cap = cv2.VideoCapture("http://10.24.40.96:8080/video")
 
 # Turunin resolusi kamera dasar biar nggak berat di CPU
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
@@ -39,7 +49,7 @@ while cap.isOpened():
     # ==========================================
     # conf=0.6 -> Hanya deteksi kalau AI yakin 60% ke atas! (Muka lu aman)
     # imgsz=480 -> Bikin proses nebak di CPU laptop jauh lebih enteng!
-    results = model(frame, stream=True, conf=0.6, imgsz=480)
+    results = model(frame, stream=True, conf=0.6, imgsz=480, device=device)
 
     # Siapkan wadah jumlah tomat
     tomato_counts = {'mentah': 0, 'mengkal': 0, 'matang': 0}

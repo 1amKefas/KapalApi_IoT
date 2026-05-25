@@ -9,7 +9,7 @@ from ultralytics import YOLO
 # ==========================================
 model = YOLO('best(2).pt') 
 API_URL = "http://localhost:8000/api/vision" # Ganti IP Kefas!
-CAMERA_URL = "http://10.24.39.112:8080/video"
+CAMERA_URL = "http://10.24.40.96:8080/video"
 
 latest_frame = None
 latest_boxes = []
@@ -90,7 +90,7 @@ print("Sistem Super Anti-Lag Aktif! Tekan 'q' untuk keluar.")
 stream = VideoStream(CAMERA_URL)
 
 last_sent_time = time.time()
-send_interval = 3 
+send_interval = 15 
 
 while True:
     success, frame = stream.read()

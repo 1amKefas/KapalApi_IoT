@@ -79,10 +79,7 @@ export default function Dashboard() {
               
               <div class="p-5">
                 <div class="aspect-video bg-gray-900 rounded flex items-center justify-center relative overflow-hidden group shadow-inner">
-                  <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
-                    <span class="material-symbols-outlined text-4xl mb-2" style="font-variation-settings: 'FILL' 1;">videocam</span>
-                    <p class="text-sm tracking-wider uppercase opacity-80 font-semibold">Menunggu Stream IP Webcam...</p>
-                  </div>
+                  <img src="http://localhost:5000/video_feed" alt="Live Stream Smart Farming" class="w-full h-full object-cover"/>
                 </div>
                 
                 {/* Counter Tomat (Reaktif) */}
